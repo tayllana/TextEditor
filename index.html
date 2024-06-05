@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CKEditor</title>
-    <script src="ckeditor5/build/ckeditor.js"></script>
+    
 </head>
 <body>
     <textarea name="editor" id="editor"></textarea>
-
-    <script src="js/MyUploadAdapter.js"></script>
-    <script src="js/MyCustomUploadAdapterPlugin.js"></script>
+    <script src="ckeditor5/build/ckeditor.js"></script>
+    <script src="ckeditor5/build/MyUploadAdapter.js"></script>
+    <script src="ckeditor5/build/MyCustomUploadAdapterPlugin.js"></script>
     <script>
         ClassicEditor
             .create(document.querySelector('#editor'), {

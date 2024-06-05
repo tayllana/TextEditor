@@ -66,7 +66,7 @@ class MyUploadAdapter {
         const xhr = new XMLHttpRequest();
     
         // Adiciona cabeçalhos CORS
-        xhr.open('POST', 'upload.php', true);
+        xhr.open('POST', '../upload.php', true);
         xhr.setRequestHeader('Content-Type', 'multipart/form-data');
         xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost'); // Substitua pelo seu domínio de front-end
         xhr.setRequestHeader('Access-Control-Allow-Methods', 'POST');
