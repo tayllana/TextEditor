@@ -7,13 +7,13 @@
     
 </head>
 <body>
-    <textarea name="editor" id="editor"></textarea>
+    <textarea name="descricao" id="descricao"></textarea>
     <script src="ckeditor5/build/ckeditor.js"></script>
     <script src="ckeditor5/build/MyUploadAdapter.js"></script>
     <script src="ckeditor5/build/MyCustomUploadAdapterPlugin.js"></script>
     <script>
         ClassicEditor
-            .create(document.querySelector('#editor'), {
+            .create(document.querySelector('#descricao'), {
                 extraPlugins: [MyCustomUploadAdapterPlugin],
             })
             .catch(error => {

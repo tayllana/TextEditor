@@ -1,25 +1,23 @@
 <?php
+header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_FILES['upload']) && $_FILES['upload']['error'] === UPLOAD_ERR_OK) {
-        $fileTmpPath = $_FILES['upload']['tmp_name'];
-        $fileName = $_FILES['upload']['name'];
-        $fileSize = $_FILES['upload']['size'];
-        $fileType = $_FILES['upload']['type'];
+    if (isset($_FILES['file'])) {
+        $fileTmpPath = $_FILES['file']['tmp_name'];
+        $fileName = $_FILES['file']['name'];
+        $fileSize = $_FILES['file']['size'];
+        $fileType = $_FILES['file']['type'];
         $fileNameCmps = explode(".", $fileName);
         $fileExtension = strtolower(end($fileNameCmps));
 
-        // Definir um diretório para armazenar os arquivos carregados
-        $uploadFileDir = './uploads/';
-        if (!file_exists($uploadFileDir)) {
-            mkdir($uploadFileDir, 0777, true);
-        }
+        $uploadFileDir = 'uploads/';
+        chmod($uploadFileDir, 0777);        
 
         $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
         $dest_path = $uploadFileDir . $newFileName;
-
+        
         if (move_uploaded_file($fileTmpPath, $dest_path)) {
             $response = [
-                'url' => 'uploads/' . $newFileName
+                'url' => 'https://www.fatorcor.com.br/adm/ckeditor5/uploads/' . $newFileName
             ];
             echo json_encode($response);
         } else {
@@ -35,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode($response);
     }
 } else {
-    header("HTTP/1.0 405 Method Not Allowed testeeeeeeeeee");
+    header("HTTP/1.0 405 Method Not Allowed");
     echo "Método não permitido";
 }
 ?>
